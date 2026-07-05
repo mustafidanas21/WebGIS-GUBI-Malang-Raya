@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Green urban balance illustration</title>
+  <desc id="desc">A stylized aerial map showing green capacity and urban pressure in balance.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#203f3d"/>
+      <stop offset="0.48" stop-color="#64745f"/>
+      <stop offset="1" stop-color="#d8a94f"/>
+    </linearGradient>
+    <linearGradient id="park" x1="0" x2="1">
+      <stop offset="0" stop-color="#21a98a"/>
+      <stop offset="1" stop-color="#8bd17f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#121819" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path d="M-120 690 C210 520 420 575 665 455 C940 320 1180 350 1720 145 L1720 920 L-120 920 Z" fill="#1b2223" opacity="0.45"/>
+  <g filter="url(#shadow)">
+    <path d="M165 585 C325 500 415 545 570 465 C735 380 855 390 1040 320 C1190 263 1325 260 1475 180 L1570 335 C1380 420 1245 430 1090 505 C930 582 745 555 585 655 C445 742 285 700 105 792 Z" fill="url(#park)" opacity="0.96"/>
+    <path d="M40 448 L1465 95 L1538 245 L125 600 Z" fill="#f8ba52" opacity="0.78"/>
+    <path d="M530 -40 L760 900" stroke="#f4f0dc" stroke-width="54" opacity="0.72"/>
+    <path d="M735 -30 L960 908" stroke="#232b2c" stroke-width="34" opacity="0.8"/>
+    <path d="M-30 245 L1600 632" stroke="#eef7ef" stroke-width="38" opacity="0.52"/>
+    <path d="M-20 345 L1580 730" stroke="#263435" stroke-width="24" opacity="0.75"/>
+  </g>
+  <g opacity="0.74">
+    <rect x="988" y="260" width="58" height="88" rx="5" fill="#eef7ef"/>
+    <rect x="1065" y="220" width="74" height="128" rx="6" fill="#ffffff"/>
+    <rect x="1160" y="285" width="54" height="68" rx="5" fill="#dce9e3"/>
+    <rect x="1235" y="235" width="70" height="120" rx="6" fill="#ffffff"/>
+    <rect x="1326" y="310" width="48" height="54" rx="5" fill="#e8f0e7"/>
+  </g>
+  <g fill="#ffffff" opacity="0.44">
+    <circle cx="1120" cy="570" r="9"/>
+    <circle cx="1160" cy="552" r="9"/>
+    <circle cx="1200" cy="534" r="9"/>
+    <circle cx="1240" cy="516" r="9"/>
+    <circle cx="1280" cy="498" r="9"/>
+    <circle cx="1320" cy="480" r="9"/>
+    <circle cx="1360" cy="462" r="9"/>
+    <circle cx="1400" cy="444" r="9"/>
+  </g>
+  <g transform="translate(1080 650)">
+    <rect width="340" height="92" rx="16" fill="#ffffff" opacity="0.94"/>
+    <circle cx="46" cy="46" r="24" fill="#21a98a"/>
+    <rect x="88" y="28" width="205" height="12" rx="6" fill="#1b2223" opacity="0.85"/>
+    <rect x="88" y="54" width="155" height="10" rx="5" fill="#60706e" opacity="0.8"/>
+  </g>
+</svg>

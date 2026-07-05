@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Parameter learning map</title>
+  <desc id="desc">A classroom style geospatial parameter illustration with NDVI, NDBI, and LST layers.</desc>
+  <rect width="900" height="620" fill="#1b2223"/>
+  <path d="M-20 470 C160 380 285 425 420 330 C560 230 700 270 920 110 L920 640 L-20 640 Z" fill="#254844"/>
+  <path d="M80 150 L805 95 L850 245 L120 310 Z" fill="#f8ba52" opacity="0.8"/>
+  <path d="M90 390 C260 290 420 330 560 250 C675 185 765 172 860 150 L845 440 C720 500 610 490 480 540 C330 598 220 540 80 575 Z" fill="#21a98a" opacity="0.85"/>
+  <g stroke="#ffffff" stroke-width="24" opacity="0.28">
+    <path d="M0 220 L900 430"/>
+    <path d="M315 -30 L510 650"/>
+    <path d="M-40 350 L880 190"/>
+  </g>
+  <g transform="translate(80 72)">
+    <rect width="180" height="84" rx="14" fill="#ffffff"/>
+    <circle cx="42" cy="42" r="20" fill="#21a98a"/>
+    <text x="78" y="36" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#1b2223">NDVI</text>
+    <text x="78" y="60" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#60706e">vegetasi</text>
+  </g>
+  <g transform="translate(360 72)">
+    <rect width="180" height="84" rx="14" fill="#ffffff"/>
+    <circle cx="42" cy="42" r="20" fill="#8b5cf6"/>
+    <text x="78" y="36" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#1b2223">NDBI</text>
+    <text x="78" y="60" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#60706e">terbangun</text>
+  </g>
+  <g transform="translate(640 72)">
+    <rect width="180" height="84" rx="14" fill="#ffffff"/>
+    <circle cx="42" cy="42" r="20" fill="#dc2626"/>
+    <text x="78" y="36" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#1b2223">LST</text>
+    <text x="78" y="60" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#60706e">suhu</text>
+  </g>
+</svg>

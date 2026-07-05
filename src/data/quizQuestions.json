@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ndvi-function",
+    "concept": "NDVI",
+    "question": "Apa fungsi NDVI dalam analisis GUBI?",
+    "options": ["Menggambarkan tingkat kehijauan vegetasi", "Mengukur jumlah bangunan bertingkat", "Menghitung suhu udara malam", "Menentukan batas administrasi"],
+    "answer": 0,
+    "explanation": "NDVI digunakan untuk membaca tingkat kehijauan vegetasi. Dalam metodologi GUBI, NDVI menjadi dasar Green Capacity Index atau GCI."
+  },
+  {
+    "id": "ndbi-function",
+    "concept": "NDBI",
+    "question": "Apa yang ditunjukkan oleh NDBI?",
+    "options": ["Kawasan terbangun dan permukaan keras", "Kerapatan pepohonan", "Jumlah curah hujan", "Kualitas air sungai"],
+    "answer": 0,
+    "explanation": "NDBI menggambarkan kawasan terbangun seperti bangunan, jalan, beton, dan aspal. Jika NDBI naik, tekanan urban biasanya ikut meningkat."
+  },
+  {
+    "id": "lst-function",
+    "concept": "LST",
+    "question": "Apa arti LST dalam penelitian ini?",
+    "options": ["Land Surface Temperature atau suhu permukaan", "Layer Sungai Terpadu", "Lokasi Sekolah Terdekat", "Luas Sawah Total"],
+    "answer": 0,
+    "explanation": "LST adalah Land Surface Temperature. Nilai LST tinggi dapat menunjukkan permukaan yang lebih panas, sehingga menjadi bagian dari Urban Pressure Index."
+  },
+  {
+    "id": "gci-source",
+    "concept": "GCI",
+    "question": "Green Capacity Index (GCI) berasal dari parameter apa?",
+    "options": ["NDVI", "NDBI", "LST", "UPI"],
+    "answer": 0,
+    "explanation": "GCI berasal dari NDVI. Semakin tinggi NDVI, vegetasi semakin rapat, sehingga kapasitas ekologis wilayah semakin kuat."
+  },
+  {
+    "id": "upi-source",
+    "concept": "UPI",
+    "question": "Urban Pressure Index (UPI) dibentuk dari kombinasi parameter apa?",
+    "options": ["NDBI dan LST", "NDVI dan GCI", "GUBI dan GCI", "Curah hujan dan sungai"],
+    "answer": 0,
+    "explanation": "UPI menggabungkan NDBI dan LST. NDBI membaca kawasan terbangun, sedangkan LST membaca suhu permukaan."
+  },
+  {
+    "id": "gubi-formula",
+    "concept": "GUBI",
+    "question": "Bagaimana rumus Green-Urban Balance Index (GUBI)?",
+    "options": ["GUBI = GCI - UPI", "GUBI = NDBI - NDVI", "GUBI = LST + curah hujan", "GUBI = UPI - GCI"],
+    "answer": 0,
+    "explanation": "Rumus utama penelitian adalah GUBI = GCI - UPI. Rumus ini membandingkan kapasitas ekologis dengan tekanan urban."
+  },
+  {
+    "id": "gubi-interpretation",
+    "concept": "Interpretasi GUBI",
+    "question": "Jika nilai GUBI negatif, apa artinya?",
+    "options": ["Tekanan urban lebih dominan daripada kapasitas ekologis", "Vegetasi selalu sangat rapat", "Wilayah pasti tidak memiliki bangunan", "Data tidak bisa dibaca"],
+    "answer": 0,
+    "explanation": "GUBI negatif berarti UPI lebih besar daripada GCI. Dengan kata lain, tekanan urban lebih dominan dibanding kapasitas ekologis."
+  }
+]

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">GUBI simulation scenario</title>
+  <desc id="desc">A simulation dashboard illustration showing sliders changing a city map.</desc>
+  <rect width="900" height="620" fill="#ffffff"/>
+  <rect x="48" y="64" width="250" height="492" rx="24" fill="#f4f7f2"/>
+  <rect x="336" y="64" width="516" height="492" rx="24" fill="#1b2223"/>
+  <g transform="translate(82 118)">
+    <text x="0" y="0" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#1b2223">Skenario</text>
+    <g transform="translate(0 50)">
+      <rect width="174" height="10" rx="5" fill="#d9e4dd"/>
+      <circle cx="130" cy="5" r="18" fill="#21a98a"/>
+      <text x="0" y="44" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#60706e">vegetasi naik</text>
+    </g>
+    <g transform="translate(0 135)">
+      <rect width="174" height="10" rx="5" fill="#d9e4dd"/>
+      <circle cx="70" cy="5" r="18" fill="#f8ba52"/>
+      <text x="0" y="44" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#60706e">kawasan terbangun</text>
+    </g>
+    <g transform="translate(0 220)">
+      <rect width="174" height="10" rx="5" fill="#d9e4dd"/>
+      <circle cx="48" cy="5" r="18" fill="#dc2626"/>
+      <text x="0" y="44" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#60706e">suhu permukaan</text>
+    </g>
+  </g>
+  <g transform="translate(386 118)">
+    <path d="M15 300 C110 220 205 250 300 172 C380 105 430 118 468 95 L468 388 L15 388 Z" fill="#21a98a" opacity="0.82"/>
+    <path d="M-10 165 L468 50 L500 135 L20 240 Z" fill="#f8ba52" opacity="0.86"/>
+    <path d="M115 -5 L215 420" stroke="#ffffff" stroke-width="28" opacity="0.35"/>
+    <path d="M260 8 L350 412" stroke="#0f1516" stroke-width="24" opacity="0.64"/>
+    <rect x="40" y="410" width="360" height="28" rx="14" fill="#ffffff" opacity="0.22"/>
+    <rect x="40" y="410" width="245" height="28" rx="14" fill="#21a98a"/>
+  </g>
+</svg>
