@@ -16,11 +16,20 @@ export default function SimulationMap({ geoJson, simulation }) {
             key={`${simulation.status.label}-${simulation.change}`}
             data={geoJson}
             style={(feature) => simulationFeatureStyle(feature, simulation.change)}
-          >
-            <Tooltip sticky>
-              <span>GUBI setelah skenario berbasis data kecamatan asli</span>
-            </Tooltip>
-          </GeoJSON>
+            onEachFeature={(feature, leafletLayer) => {
+              const name = feature.properties.name ?? feature.properties['KEP_MAL.WADMKC'] ?? '-';
+              const baseGubi = Number(feature?.properties?.gubi ?? 0);
+              const simulatedGubi = baseGubi + simulation.change;
+              const category = getGubiCategory(simulatedGubi);
+              
+              leafletLayer.bindTooltip(
+                `<strong>Kecamatan ${name}</strong><br/>
+                 GUBI Awal: ${baseGubi.toFixed(2)}<br/>
+                 GUBI Simulasi: ${simulatedGubi.toFixed(2)} (${category.shortLabel})`,
+                { sticky: true }
+              );
+            }}
+          />
         ) : null}
       </MapContainer>
     </div>

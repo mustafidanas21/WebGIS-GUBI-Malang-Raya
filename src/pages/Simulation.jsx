@@ -55,7 +55,7 @@ export default function Simulation() {
             <div className="size-9 animate-spin rounded-full border-4 border-brand-600 border-t-transparent" />
           </div>
           <h2 className="mt-5 text-xl font-extrabold text-carbon-950 animate-pulse">Memuat Simulator...</h2>
-          <p className="mt-2 text-sm text-carbon-600">Sedang memuat data spasial kecamatan asli Malang Raya.</p>
+          <p className="mt-2 text-sm text-carbon-600">Sedang memuat data spasial Kecamatan Malang Raya.</p>
         </div>
       </div>
     );
@@ -74,7 +74,7 @@ export default function Simulation() {
               Coba Skenario Mitigasi Hijau-Urban
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-carbon-600">
-              Geser parameter untuk melihat perubahan terhadap rata-rata GCI, UPI, dan GUBI dari data kecamatan asli.
+              Geser parameter untuk melihat perubahan terhadap rata-rata GCI, UPI, dan GUBI Kecamatan Malang Raya.
               Skenario ini membantu pengguna memahami dampak vegetasi, pembangunan, dan panas terhadap ketahanan wilayah.
             </p>
           </motion.div>

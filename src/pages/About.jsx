@@ -35,8 +35,8 @@ export default function About() {
         />
         <AboutCard
           icon={Database}
-          title="Status Data"
-          description="WebGIS, Story Map, dan Simulation membaca batas kecamatan serta atribut GCI, UPI, dan GUBI dari folder public/data."
+          title="Akurasi Parameter"
+          description="Mengintegrasikan data penginderaan jauh (NDVI, NDBI, LST) terbaru untuk menyajikan analisis ketahanan lingkungan yang presisi."
         />
       </section>
     </div>
