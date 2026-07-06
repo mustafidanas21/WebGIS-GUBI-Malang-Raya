@@ -130,16 +130,16 @@ export default function WebGIS() {
         <div className="flex h-full flex-col justify-center gap-2 lg:flex-row lg:items-center lg:justify-between">
           <div className="min-w-0">
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-700">WebGIS GUBI</p>
-            <h1 className="truncate text-lg font-extrabold text-carbon-950 sm:text-xl">Eksplorasi GUBI Malang Raya</h1>
+            <h1 className="truncate text-lg font-extrabold text-carbon-950 sm:text-xl">Eksplorasi Ketahanan GUBI Malang Raya</h1>
           </div>
           <p className="max-w-2xl text-xs font-semibold leading-5 text-carbon-600 lg:text-right">
-            Bandingkan NDVI, NDBI, LST, GCI, UPI, dan GUBI dalam satu workspace peta horizontal.
+            Bandingkan indikator vegetasi, pembangunan, panas permukaan, dan keseimbangan wilayah untuk keputusan spasial.
           </p>
         </div>
       </section>
 
-      <section className="relative grid min-h-[calc(100vh-8rem)] grid-cols-1 lg:block lg:h-[calc(100%-3.5rem)] lg:min-h-0">
-        <div className="order-2 min-h-[620px] lg:absolute lg:inset-0 lg:min-h-0">
+      <section className="relative h-[550px] sm:h-[650px] lg:h-[calc(100%-3.5rem)] w-full overflow-hidden">
+        <div className="absolute inset-0 h-full w-full">
           <WebGISMap
             layers={webgisLayers}
             layerState={layerState}
@@ -157,7 +157,7 @@ export default function WebGIS() {
           />
         </div>
 
-        <div className="pointer-events-none absolute left-4 top-4 z-[700] hidden items-center gap-2 lg:flex">
+        <div className="pointer-events-none absolute left-4 top-4 z-[700] flex items-center gap-2">
           <button
             type="button"
             className="pointer-events-auto focus-ring inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-extrabold text-carbon-900 shadow-soft transition hover:bg-brand-50"
@@ -167,7 +167,7 @@ export default function WebGIS() {
             <Layers size={17} aria-hidden="true" />
             Layer
           </button>
-          <div className="pointer-events-auto rounded-lg bg-white/95 px-3 py-2 text-xs font-bold text-carbon-700 shadow-soft">
+          <div className="pointer-events-auto hidden rounded-lg bg-white/95 px-3 py-2 text-xs font-bold text-carbon-700 shadow-soft md:block">
             Layer aktif: {activeInfoLayer.name}
           </div>
         </div>
@@ -183,8 +183,8 @@ export default function WebGIS() {
 
         <div
           className={[
-            'order-1 min-h-[460px] lg:absolute lg:bottom-4 lg:left-4 lg:top-16 lg:z-[710] lg:min-h-0 lg:w-[300px] lg:overflow-hidden lg:rounded-lg lg:border lg:border-carbon-200 lg:shadow-soft',
-            isLayerPanelOpen ? 'lg:block' : 'lg:hidden',
+            'absolute bottom-4 left-4 top-16 z-[710] w-[calc(100%-2rem)] sm:w-[300px] overflow-hidden rounded-lg border border-carbon-200 shadow-soft bg-white',
+            isLayerPanelOpen ? 'block' : 'hidden',
           ].join(' ')}
         >
           <PanelCloseButton label="Tutup panel layer" onClose={() => setIsLayerPanelOpen(false)} />
@@ -206,7 +206,7 @@ function SearchOverlay({ value, results, isLoading, selectedName, onChange, onSe
   const hasQuery = value.trim().length > 0;
 
   return (
-    <section className="order-3 bg-white p-4 lg:absolute lg:right-20 lg:top-4 lg:z-[700] lg:w-80 lg:rounded-lg lg:border lg:border-carbon-200 lg:bg-white/95 lg:p-3 lg:shadow-soft">
+    <section className="absolute right-4 top-4 z-[700] w-[calc(100%-10rem)] sm:w-80 rounded-lg border border-carbon-200 bg-white/95 p-2 shadow-soft">
       <label htmlFor="webgis-search" className="sr-only">
         Cari kecamatan
       </label>

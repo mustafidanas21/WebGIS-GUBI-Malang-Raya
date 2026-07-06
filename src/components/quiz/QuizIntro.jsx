@@ -4,7 +4,7 @@ import { ArrowRight, BookOpenCheck, Leaf, Map } from 'lucide-react';
 export default function QuizIntro({ totalQuestions, onStart }) {
   const highlights = [
     { icon: Map, label: 'Baca pola ruang' },
-    { icon: Leaf, label: 'Pahami lingkungan' },
+    { icon: Leaf, label: 'Pahami ketahanan' },
     { icon: BookOpenCheck, label: 'Belajar dari pembahasan' },
   ];
 
@@ -24,8 +24,8 @@ export default function QuizIntro({ totalQuestions, onStart }) {
             Tantangan Green-Urban Balance Index
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-8 text-carbon-600 sm:text-lg">
-            Jawab {totalQuestions} soal singkat tentang NDVI, NDBI, LST, GCI, UPI, dan rumus GUBI.
-            Setelah selesai, kamu akan mendapat skor, persentase, badge, dan pembahasan konsep.
+            Jawab {totalQuestions} soal singkat tentang indikator GUBI dan hubungannya dengan ruang hijau,
+            panas kota, serta ketahanan lingkungan.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             {highlights.map(({ icon: Icon, label }) => (
@@ -58,7 +58,7 @@ export default function QuizIntro({ totalQuestions, onStart }) {
             <p className="text-sm font-extrabold text-warning-200">Misi belajar</p>
             <p className="mt-3 text-3xl font-extrabold">{totalQuestions} soal</p>
             <p className="mt-3 text-sm leading-6 text-carbon-200">
-              Fokusnya bukan cepat-cepatan, tapi memahami alasan di balik data lingkungan kota.
+              Fokusnya bukan cepat-cepatan, tapi memahami alasan di balik data lingkungan dan keputusan spasial.
             </p>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-3">

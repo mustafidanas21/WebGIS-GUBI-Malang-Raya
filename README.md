@@ -1,8 +1,16 @@
-# Analisis Zona Polusi Kota Malang
+# Green-Urban Balance Index (GUBI) Malang Raya
 
-Fondasi website pembelajaran geografi berbasis WebGIS untuk lomba peta tematik:
+Platform edukasi geografi berbasis WebGIS untuk tema **Social and Environmental Resilience**.
 
-**Analisis Zona Polusi Kota Malang Menuju Net Zero Emission**
+Website ini membantu siswa SMP/SMA, guru geografi, dan masyarakat umum memahami bagaimana peta dan indikator spasial dapat digunakan untuk membaca ketahanan sosial-lingkungan di Malang Raya.
+
+## Fokus Pembelajaran
+
+- Membaca kesehatan vegetasi melalui NDVI dan GCI.
+- Membaca tekanan pembangunan melalui NDBI dan UPI.
+- Membaca paparan panas perkotaan melalui LST.
+- Menafsirkan GUBI sebagai keseimbangan antara kapasitas hijau dan tekanan urban.
+- Menghubungkan hasil peta dengan mitigasi, adaptasi iklim, konservasi vegetasi, dan keputusan spasial.
 
 ## Stack
 
@@ -23,4 +31,4 @@ npm install
 npm run dev
 ```
 
-Struktur utama berada di `src/` dan disiapkan agar mudah dikembangkan untuk halaman storymap, WebGIS, dashboard data, materi belajar, dan profil proyek.
+Data raster dan vektor berada di `public/data/`. Tile raster WebGIS berada di `public/data/tiles/`.

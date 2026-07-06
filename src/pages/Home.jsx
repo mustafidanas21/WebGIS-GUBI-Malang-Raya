@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Compass, MapPinned, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, Compass, MapPinned, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -10,6 +10,7 @@ import {
   quickStats,
   researchGoals,
 } from '../data/homeData.js';
+import { handleImageFallback, imageAssets } from '../data/imageAssets.js';
 
 export default function Home() {
   return (
@@ -38,15 +39,15 @@ function HeroSection() {
           className="max-w-3xl"
         >
           <div className="inline-flex items-center gap-2 border-l-4 border-warning-300 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-warning-100 backdrop-blur">
-            <Sparkles size={16} aria-hidden="true" />
-            Green-Urban Balance Index Malang Raya
+            <ShieldCheck size={16} aria-hidden="true" />
+            Social and Environmental Resilience
           </div>
           <h1 className="mt-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
             Apakah Malang Raya masih seimbang antara ruang hijau dan pembangunan?
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-carbon-100 sm:text-lg">
-            Identifikasi keseimbangan kapasitas ekologis dan tekanan urbanisasi untuk mendukung kota berkelanjutan.
-            Pelajari hubungan ruang hijau dan perkembangan kota melalui Story Map, WebGIS, Quiz, dan Simulation.
+            Pelajari bagaimana peta membantu membaca ketahanan sosial-lingkungan: ruang hijau, tekanan pembangunan,
+            paparan panas, dan pilihan kota yang lebih tangguh.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -76,8 +77,8 @@ function WhyMalangSection() {
       <div className="page-shell">
         <SectionHeader
           eyebrow="Mengapa Kota Malang?"
-          title="Kota pendidikan dengan dinamika ruang yang dekat dengan kehidupan siswa."
-          description="Malang Raya dipilih karena memiliki pusat aktivitas, kawasan terbangun, vegetasi, dan mobilitas harian yang dapat diamati lewat peta."
+          title="Malang Raya adalah ruang belajar nyata tentang ketahanan kota."
+          description="Wilayah ini memiliki pusat aktivitas, kawasan terbangun, vegetasi, dan suhu permukaan yang dapat diamati untuk memahami lingkungan tempat tinggal."
         />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {malangReasons.map((item, index) => (
@@ -96,8 +97,8 @@ function WhyBalanceSection() {
         <div>
           <SectionHeader
             eyebrow="Mengapa Keseimbangan Kota Penting?"
-            title="Kota berkelanjutan perlu menyeimbangkan ruang hijau dan tekanan urbanisasi."
-            description="Siswa diajak melihat hubungan antara NDVI, NDBI, LST, GCI, UPI, dan nilai GUBI."
+            title="Ketahanan kota dimulai dari keseimbangan ruang hijau dan pembangunan."
+            description="Pengguna diajak melihat hubungan NDVI, NDBI, LST, GCI, UPI, dan GUBI dengan kualitas lingkungan dan adaptasi panas."
           />
           <div className="mt-8 grid gap-4">
             {balanceReasons.map((item, index) => (
@@ -127,8 +128,8 @@ function ResearchGoalsSection() {
       <div className="page-shell grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
         <SectionHeader
           eyebrow="Tujuan Penelitian"
-          title="Dari membaca parameter menuju memahami keseimbangan kota."
-          description="Website ini dirancang agar siswa dan guru memahami hubungan antarparameter, bukan hanya melihat warna peta."
+          title="Dari membaca parameter menuju keputusan spasial yang lebih tangguh."
+          description="Website ini membantu masyarakat dan pembuat kebijakan memahami hubungan antarparameter untuk konservasi, mitigasi panas, dan tata ruang berkelanjutan."
         />
         <div className="grid gap-4">
           {researchGoals.map((goal, index) => (
@@ -159,8 +160,8 @@ function StatsSection() {
         <div>
           <SectionHeader
             eyebrow="Statistik Singkat"
-            title="Ringkasan awal untuk memancing rasa ingin tahu."
-            description="Angka berikut masih menggunakan data dummy, tetapi struktur informasinya disiapkan untuk diganti dengan data asli."
+            title="Ringkasan awal untuk membaca kondisi wilayah."
+            description="Ringkasan ini menjadi pengantar sebelum Anda mengeksplorasi raster GUBI dan parameter penyusunnya pada WebGIS."
             dark
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -178,7 +179,7 @@ function StatsSection() {
         <div className="rounded-lg border border-white/10 bg-white p-5 text-carbon-950 shadow-soft">
           <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.18em] text-brand-700">
             <Compass size={18} aria-hidden="true" />
-            Distribusi Kategori GUBI Dummy
+            Distribusi Kategori GUBI
           </div>
           <div className="mt-6 h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -201,9 +202,9 @@ function PreviewSection() {
     <section className="bg-carbon-100 py-16 sm:py-20">
       <div className="page-shell">
         <SectionHeader
-          eyebrow="Alur Pembelajaran"
-          title="Empat langkah belajar yang runtut."
-          description="Mulai dari konsep, lanjut ke eksplorasi data, uji pemahaman, lalu coba skenario kebijakan."
+          eyebrow="Alur Eksplorasi"
+          title="Empat langkah memahami ketahanan sosial-lingkungan."
+          description="Mulai dari konsep, lanjut ke eksplorasi data, uji pemahaman, lalu coba skenario mitigasi sederhana."
         />
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {previews.map((item, index) => (
@@ -285,10 +286,11 @@ function MapIllustration() {
   return (
     <div className="absolute inset-0 opacity-90" aria-hidden="true">
       <img
-        src="/assets/illustrations/gubi-hero.svg"
+        src={imageAssets.malangPanorama.src}
         alt=""
         className="h-full w-full object-cover"
         draggable="false"
+        onError={(event) => handleImageFallback(event, imageAssets.malangPanorama.fallback)}
       />
     </div>
   );
@@ -296,21 +298,47 @@ function MapIllustration() {
 
 function LargeBalanceVisual() {
   return (
-    <img
-      src="/assets/illustrations/balance-index.svg"
-      alt=""
-      className="h-full w-full object-cover"
-      draggable="false"
-    />
+    <div className="grid h-full grid-cols-2" aria-hidden="true">
+      <div className="relative overflow-hidden">
+        <img
+          src={imageAssets.vegetationCanopy.src}
+          alt=""
+          className="h-full w-full object-cover"
+          draggable="false"
+        />
+        <div className="absolute inset-0 bg-brand-900/20" />
+        <span className="absolute bottom-5 left-5 rounded-md bg-white px-3 py-2 text-xs font-extrabold text-carbon-950">
+          Green Capacity
+        </span>
+      </div>
+      <div className="relative overflow-hidden">
+        <img
+          src={imageAssets.urbanBuiltUp.src}
+          alt=""
+          className="h-full w-full object-cover"
+          draggable="false"
+        />
+        <div className="absolute inset-0 bg-warning-900/20" />
+        <span className="absolute bottom-5 left-5 rounded-md bg-white px-3 py-2 text-xs font-extrabold text-carbon-950">
+          Urban Pressure
+        </span>
+      </div>
+    </div>
   );
 }
 
 function MiniMapVisual({ variant }) {
   const imageByVariant = [
-    '/assets/illustrations/story-parameter.svg',
-    '/assets/illustrations/gubi-hero.svg',
-    '/assets/illustrations/learning-flow.svg',
-    '/assets/illustrations/simulation-policy.svg',
+    imageAssets.malangPanorama.src,
+    imageAssets.gubiMapPreview.src,
+    imageAssets.dashboardAnalysis.src,
+    imageAssets.urbanPressure.src,
+  ];
+  const fallbackByVariant = [
+    imageAssets.malangPanorama.fallback,
+    imageAssets.gubiMapPreview.src,
+    imageAssets.dashboardAnalysis.src,
+    imageAssets.urbanPressure.src,
   ];
 
   return (
@@ -320,6 +348,7 @@ function MiniMapVisual({ variant }) {
         alt=""
         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         draggable="false"
+        onError={(event) => handleImageFallback(event, fallbackByVariant[variant] ?? fallbackByVariant[0])}
       />
       <div className="absolute bottom-8 left-8 flex items-center gap-2 rounded-md bg-white px-3 py-2 text-xs font-extrabold text-carbon-950">
         <BookOpen size={14} aria-hidden="true" />

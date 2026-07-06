@@ -1,4 +1,4 @@
-import { BookOpen, Database, GraduationCap, MapPinned } from 'lucide-react';
+import { BookOpen, Database, Users, MapPinned } from 'lucide-react';
 
 export default function About() {
   return (
@@ -10,33 +10,33 @@ export default function About() {
             Green-Urban Balance Index (GUBI) Malang Raya
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-8 text-carbon-600">
-            Website ini dirancang sebagai media pembelajaran geografi berbasis WebGIS. Siswa, guru, dan masyarakat
-            dapat belajar membaca peta, memahami NDVI, NDBI, LST, GCI, UPI, dan menafsirkan keseimbangan
-            kapasitas ekologis dengan tekanan urbanisasi di Malang Raya.
+            Website ini dirancang sebagai platform informasi dan edukasi geografi berbasis WebGIS. Masyarakat umum,
+            akademisi, dan pembuat kebijakan dapat membaca NDVI, NDBI, LST, GCI, UPI, dan GUBI untuk memahami
+            ketahanan sosial-lingkungan di Malang Raya.
           </p>
         </div>
       </section>
 
       <section className="page-shell grid gap-5 py-12 md:grid-cols-2 xl:grid-cols-4">
         <AboutCard
-          icon={GraduationCap}
-          title="Target Belajar"
-          description="Membantu siswa SMP/SMA memahami keseimbangan ruang hijau dan pembangunan kota dengan bahasa sederhana."
+          icon={Users}
+          title="Tujuan Literasi"
+          description="Membantu publik memahami ketahanan lingkungan, paparan panas, dan peran ruang hijau dengan bahasa sederhana."
         />
         <AboutCard
           icon={MapPinned}
           title="Pendekatan WebGIS"
-          description="Menggabungkan Story Map, WebGIS, Quiz, dan Simulation sebagai alur belajar yang runtut."
+          description="Menggabungkan Story Map, WebGIS, Quiz, dan Simulation untuk melatih literasi spasial dan pengambilan keputusan."
         />
         <AboutCard
           icon={BookOpen}
           title="Materi Edukatif"
-          description="Konten disusun untuk mendukung diskusi kelas, observasi lingkungan, dan literasi spasial."
+          description="Konten mendukung peningkatan kesadaran warga mengenai konservasi vegetasi, tata guna lahan, adaptasi panas, dan resiliensi perkotaan."
         />
         <AboutCard
           icon={Database}
           title="Status Data"
-          description="Seluruh data saat ini dummy sehingga aman untuk lomba dan mudah diganti dengan data valid."
+          description="WebGIS, Story Map, dan Simulation membaca batas kecamatan serta atribut GCI, UPI, dan GUBI dari folder public/data."
         />
       </section>
     </div>

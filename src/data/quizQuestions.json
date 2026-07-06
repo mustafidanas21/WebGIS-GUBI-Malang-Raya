@@ -2,57 +2,131 @@
   {
     "id": "ndvi-function",
     "concept": "NDVI",
-    "question": "Apa fungsi NDVI dalam analisis GUBI?",
-    "options": ["Menggambarkan tingkat kehijauan vegetasi", "Mengukur jumlah bangunan bertingkat", "Menghitung suhu udara malam", "Menentukan batas administrasi"],
-    "answer": 0,
-    "explanation": "NDVI digunakan untuk membaca tingkat kehijauan vegetasi. Dalam metodologi GUBI, NDVI menjadi dasar Green Capacity Index atau GCI."
+    "question": "Mengapa NDVI penting untuk membaca ketahanan lingkungan?",
+    "options": [
+      "Menghitung suhu udara malam",
+      "Menggambarkan kesehatan dan kehijauan vegetasi",
+      "Mengukur jumlah bangunan bertingkat",
+      "Menentukan batas administrasi"
+    ],
+    "answer": 1,
+    "explanation": "NDVI membaca kehijauan vegetasi. Vegetasi yang baik membantu menurunkan panas, menyerap air hujan, dan mendukung ketahanan ekosistem."
   },
   {
     "id": "ndbi-function",
     "concept": "NDBI",
-    "question": "Apa yang ditunjukkan oleh NDBI?",
-    "options": ["Kawasan terbangun dan permukaan keras", "Kerapatan pepohonan", "Jumlah curah hujan", "Kualitas air sungai"],
+    "question": "Apa yang ditunjukkan oleh NDBI dalam kajian ketahanan kota?",
+    "options": [
+      "Kawasan terbangun dan permukaan keras",
+      "Kerapatan pepohonan",
+      "Jumlah curah hujan",
+      "Kualitas air sungai"
+    ],
     "answer": 0,
-    "explanation": "NDBI menggambarkan kawasan terbangun seperti bangunan, jalan, beton, dan aspal. Jika NDBI naik, tekanan urban biasanya ikut meningkat."
+    "explanation": "NDBI menggambarkan kawasan terbangun seperti bangunan, jalan, beton, dan aspal. Jika NDBI naik, tekanan pemanfaatan lahan biasanya ikut meningkat."
   },
   {
     "id": "lst-function",
     "concept": "LST",
-    "question": "Apa arti LST dalam penelitian ini?",
-    "options": ["Land Surface Temperature atau suhu permukaan", "Layer Sungai Terpadu", "Lokasi Sekolah Terdekat", "Luas Sawah Total"],
-    "answer": 0,
-    "explanation": "LST adalah Land Surface Temperature. Nilai LST tinggi dapat menunjukkan permukaan yang lebih panas, sehingga menjadi bagian dari Urban Pressure Index."
+    "question": "Apa arti LST dalam membaca paparan panas wilayah?",
+    "options": [
+      "Layer Sungai Terpadu",
+      "Lokasi Stasiun Terdekat",
+      "Land Surface Temperature atau suhu permukaan",
+      "Luas Sawah Total"
+    ],
+    "answer": 2,
+    "explanation": "LST adalah Land Surface Temperature. Nilai LST tinggi menunjukkan permukaan lebih panas, sehingga penting untuk adaptasi iklim dan kenyamanan warga."
   },
   {
     "id": "gci-source",
     "concept": "GCI",
     "question": "Green Capacity Index (GCI) berasal dari parameter apa?",
-    "options": ["NDVI", "NDBI", "LST", "UPI"],
-    "answer": 0,
-    "explanation": "GCI berasal dari NDVI. Semakin tinggi NDVI, vegetasi semakin rapat, sehingga kapasitas ekologis wilayah semakin kuat."
+    "options": [
+      "NDBI",
+      "LST",
+      "UPI",
+      "NDVI"
+    ],
+    "answer": 3,
+    "explanation": "GCI berasal dari NDVI. Semakin tinggi NDVI, vegetasi semakin kuat, sehingga infrastruktur hijau wilayah lebih mendukung ketahanan lingkungan."
   },
   {
     "id": "upi-source",
     "concept": "UPI",
-    "question": "Urban Pressure Index (UPI) dibentuk dari kombinasi parameter apa?",
-    "options": ["NDBI dan LST", "NDVI dan GCI", "GUBI dan GCI", "Curah hujan dan sungai"],
+    "question": "Urban Pressure Index (UPI) membantu membaca tekanan apa?",
+    "options": [
+      "NDBI dan LST",
+      "NDVI dan GCI",
+      "GUBI dan GCI",
+      "Curah hujan dan sungai"
+    ],
     "answer": 0,
-    "explanation": "UPI menggabungkan NDBI dan LST. NDBI membaca kawasan terbangun, sedangkan LST membaca suhu permukaan."
+    "explanation": "UPI menggabungkan NDBI and LST. Indeks ini membantu membaca tekanan pembangunan dan panas permukaan yang perlu dimitigasi."
   },
   {
     "id": "gubi-formula",
     "concept": "GUBI",
     "question": "Bagaimana rumus Green-Urban Balance Index (GUBI)?",
-    "options": ["GUBI = GCI - UPI", "GUBI = NDBI - NDVI", "GUBI = LST + curah hujan", "GUBI = UPI - GCI"],
-    "answer": 0,
-    "explanation": "Rumus utama penelitian adalah GUBI = GCI - UPI. Rumus ini membandingkan kapasitas ekologis dengan tekanan urban."
+    "options": [
+      "GUBI = NDBI - NDVI",
+      "GUBI = GCI - UPI",
+      "GUBI = LST + curah hujan",
+      "GUBI = UPI - GCI"
+    ],
+    "answer": 1,
+    "explanation": "Rumus utama penelitian adalah GUBI = GCI - UPI. Rumus ini membandingkan kapasitas hijau dengan tekanan urban untuk membaca ketahanan wilayah."
   },
   {
     "id": "gubi-interpretation",
     "concept": "Interpretasi GUBI",
-    "question": "Jika nilai GUBI negatif, apa artinya?",
-    "options": ["Tekanan urban lebih dominan daripada kapasitas ekologis", "Vegetasi selalu sangat rapat", "Wilayah pasti tidak memiliki bangunan", "Data tidak bisa dibaca"],
-    "answer": 0,
-    "explanation": "GUBI negatif berarti UPI lebih besar daripada GCI. Dengan kata lain, tekanan urban lebih dominan dibanding kapasitas ekologis."
+    "question": "Jika nilai GUBI negatif, apa artinya bagi ketahanan wilayah?",
+    "options": [
+      "Vegetasi selalu sangat rapat",
+      "Wilayah pasti tidak memiliki bangunan",
+      "Tekanan urban lebih dominan daripada kapasitas ekologis",
+      "Data tidak bisa dibaca"
+    ],
+    "answer": 2,
+    "explanation": "GUBI negatif berarti UPI lebih besar daripada GCI. Wilayah tersebut perlu perhatian pada ruang hijau, suhu permukaan, dan pengelolaan kawasan terbangun."
+  },
+  {
+    "id": "mitigation-action",
+    "concept": "Mitigasi Panas",
+    "question": "Aksi manakah yang paling efektif untuk menaikkan nilai GUBI di kawasan perkotaan yang padat?",
+    "options": [
+      "Membangun lebih banyak jalan aspal",
+      "Menambahkan ruang terbuka hijau (RTH) dan menanam pohon peneduh",
+      "Mengganti taman publik dengan paving block",
+      "Mengecat semua atap bangunan dengan warna hitam"
+    ],
+    "answer": 1,
+    "explanation": "Menambah RTH meningkatkan nilai GCI dan membantu menurunkan suhu permukaan (LST), sehingga secara efektif meningkatkan keseimbangan GUBI."
+  },
+  {
+    "id": "resilience-flood",
+    "concept": "Ketahanan Ekologis",
+    "question": "Bagaimana hubungan antara ruang hijau yang luas dengan ketahanan banjir?",
+    "options": [
+      "Ruang hijau mempercepat limpasan air permukaan ke pemukiman",
+      "Ruang hijau tidak memengaruhi pergerakan air tanah",
+      "Ruang hijau meningkatkan kapasitas resapan air ke dalam tanah",
+      "Ruang hijau membuat tanah menjadi kedap air"
+    ],
+    "answer": 2,
+    "explanation": "Tanah di bawah vegetasi bertindak sebagai spons alami yang menyerap air hujan, mengurangi banjir limpasan, dan memperkuat resiliensi daerah."
+  },
+  {
+    "id": "spatial-decision",
+    "concept": "Tata Ruang Berkelanjutan",
+    "question": "Sebagai pengambil kebijakan tata ruang, apa yang harus dilakukan jika peta WebGIS menunjukkan daerah berwarna oranye pekat (GUBI negatif tinggi)?",
+    "options": [
+      "Melarang seluruh aktivitas ekonomi di daerah tersebut",
+      "Memperluas area perkerasan semen tanpa batas",
+      "Membiarkan wilayah tersebut tanpa intervensi lingkungan",
+      "Mewajibkan penyediaan koridor hijau dan taman vertikal pada bangunan baru"
+    ],
+    "answer": 3,
+    "explanation": "Kawasan dengan GUBI negatif tinggi menunjukkan tekanan urban yang dominan. Mewajibkan koridor hijau membantu memitigasi tekanan tersebut tanpa menghentikan pembangunan sepenuhnya."
   }
 ]

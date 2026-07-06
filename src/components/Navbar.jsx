@@ -1,4 +1,4 @@
-import { Menu, X } from 'lucide-react';
+import { Leaf, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { navItems } from '../data/navigation.js';
@@ -18,8 +18,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-carbon-200/80 bg-white/90 backdrop-blur">
       <nav className="page-shell flex h-16 items-center justify-between gap-4" aria-label="Navigasi utama">
         <NavLink to="/" className="flex min-w-0 items-center gap-3 focus-ring" onClick={() => setIsOpen(false)}>
-          <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-brand-600 text-sm font-bold text-white shadow-soft">
-            ML
+          <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-brand-600 text-white shadow-soft">
+            <Leaf size={20} className="fill-white/10" aria-hidden="true" />
           </span>
           <span className="truncate text-sm font-extrabold leading-tight text-carbon-950 sm:text-base">
             GUBI Malang Raya

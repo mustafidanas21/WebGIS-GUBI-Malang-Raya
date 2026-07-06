@@ -10,7 +10,8 @@ import {
 } from 'react-leaflet';
 import { AlertTriangle, Expand, LocateFixed, Loader2, Map as MapIcon } from 'lucide-react';
 import { basemaps, webgisCenter } from '../../data/webgisData.js';
-import { formatPropertyValue, getDisplayFields } from '../../services/VectorService.js';
+import { getDisplayFields } from '../../services/VectorService.js';
+import { getGubiCategory } from '../../data/gubiAnalysisData.js';
 
 export default function WebGISMap({
   layers,
@@ -245,25 +246,23 @@ function MapControlButtons({ onFullscreen }) {
   const map = useMap();
 
   return (
-    <div className="leaflet-top leaflet-right">
-      <div className="leaflet-control grid gap-2 border-0 bg-transparent shadow-none">
-        <button
-          type="button"
-          className="grid size-10 place-items-center rounded-md bg-white text-carbon-800 shadow-soft transition hover:bg-brand-50"
-          aria-label="Kembali ke pusat Malang Raya"
-          onClick={() => map.flyTo(webgisCenter, 11)}
-        >
-          <LocateFixed size={19} aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          className="grid size-10 place-items-center rounded-md bg-white text-carbon-800 shadow-soft transition hover:bg-brand-50"
-          aria-label="Fullscreen"
-          onClick={onFullscreen}
-        >
-          <Expand size={19} aria-hidden="true" />
-        </button>
-      </div>
+    <div className="absolute left-4 top-[7.5rem] lg:top-[10.5rem] z-[500] grid gap-2">
+      <button
+        type="button"
+        className="grid size-10 place-items-center rounded-md border border-carbon-200 bg-white text-carbon-800 shadow-soft transition hover:bg-brand-50 cursor-pointer"
+        aria-label="Kembali ke pusat Malang Raya"
+        onClick={() => map.flyTo(webgisCenter, 11)}
+      >
+        <LocateFixed size={18} aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        className="grid size-10 place-items-center rounded-md border border-carbon-200 bg-white text-carbon-800 shadow-soft transition hover:bg-brand-50 cursor-pointer"
+        aria-label="Perbesar layar"
+        onClick={onFullscreen}
+      >
+        <Expand size={18} aria-hidden="true" />
+      </button>
     </div>
   );
 }
@@ -353,20 +352,26 @@ function MapStatusOverlay({ vectorStatus, rasterStatus, visibleLayers }) {
   if (!isLoading && errors.length === 0) return null;
 
   return (
-    <div className="absolute left-4 right-4 top-24 z-[500] grid gap-2 sm:left-auto sm:w-80">
+    <>
       {isLoading ? (
-        <div className="flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-extrabold text-carbon-800 shadow-soft">
-          <Loader2 className="animate-spin text-brand-700" size={18} aria-hidden="true" />
-          Memuat data spasial asli...
+        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-carbon-900/20 backdrop-blur-[2px] pointer-events-none">
+          <div className="flex items-center gap-3 rounded-lg border border-carbon-200 bg-white px-5 py-3.5 shadow-soft pointer-events-auto">
+            <Loader2 className="animate-spin text-brand-700" size={20} aria-hidden="true" />
+            <span className="text-sm font-extrabold text-carbon-800">Memuat data spasial...</span>
+          </div>
         </div>
       ) : null}
-      {errors.map((error) => (
-        <div key={error} className="flex gap-2 rounded-lg bg-warning-100 px-4 py-3 text-sm font-bold text-warning-900 shadow-soft">
-          <AlertTriangle className="mt-0.5 shrink-0" size={18} aria-hidden="true" />
-          <span>{error}</span>
+      {errors.length > 0 ? (
+        <div className="absolute left-4 right-4 top-24 z-[900] grid gap-2 sm:left-auto sm:w-80">
+          {errors.map((error) => (
+            <div key={error} className="flex gap-2 rounded-lg bg-warning-100 px-4 py-3 text-sm font-bold text-warning-900 shadow-soft border border-warning-200">
+              <AlertTriangle className="mt-0.5 shrink-0" size={18} aria-hidden="true" />
+              <span>{error}</span>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      ) : null}
+    </>
   );
 }
 
@@ -394,22 +399,44 @@ function getFeatureKey(feature) {
 
 function buildPopup(feature) {
   const properties = feature.properties ?? {};
-  const rows = getDisplayFields(properties)
-    .map(
-      (field) => `
-        <div class="flex items-center justify-between gap-3 border-b border-carbon-100 py-1.5 text-xs">
-          <span class="font-bold text-carbon-600">${escapeHtml(field)}</span>
-          <span class="text-right font-extrabold text-carbon-950">${escapeHtml(formatPropertyValue(properties[field]))}</span>
-        </div>
-      `,
-    )
-    .join('');
+  
+  // Extract values with fallbacks to raw properties
+  const name = properties.name ?? properties['KEP_MAL.WADMKC'] ?? '-';
+  const gci = properties.gci ?? properties['olah.csv.GCI'] ?? 0;
+  const upi = properties.upi ?? properties['olah.csv.UPI'] ?? 0;
+  const gubi = properties.gubi ?? properties['olah.csv.GUBI'] ?? 0;
+  
+  const categoryInfo = getGubiCategory(Number(gubi));
+  const category = categoryInfo.label;
+  const color = categoryInfo.color;
 
   return `
-    <div class="space-y-2">
-      <p class="text-[11px] font-extrabold uppercase tracking-[0.16em] text-brand-700">Kecamatan.geojson</p>
-      <h3 class="text-base font-extrabold text-carbon-950">Atribut Kecamatan</h3>
-      <div class="mt-3 max-h-72 overflow-y-auto">${rows || '<p class="text-sm text-carbon-500">Tidak ada atribut yang dapat ditampilkan.</p>'}</div>
+    <div class="space-y-3 p-1">
+      <div class="border-b border-carbon-200 pb-2">
+        <p class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-brand-700">Profil Ketahanan Wilayah</p>
+        <h3 class="text-lg font-extrabold text-carbon-950">${escapeHtml(name)}</h3>
+      </div>
+      
+      <div class="grid gap-2">
+        <div class="flex items-center justify-between text-xs py-1.5 border-b border-carbon-100">
+          <span class="font-bold text-carbon-500">Green Capacity Index (GCI)</span>
+          <span class="font-extrabold text-brand-700">${escapeHtml(Number(gci).toFixed(2))}</span>
+        </div>
+        <div class="flex items-center justify-between text-xs py-1.5 border-b border-carbon-100">
+          <span class="font-bold text-carbon-500">Urban Pressure Index (UPI)</span>
+          <span class="font-extrabold text-warning-700">${escapeHtml(Number(upi).toFixed(2))}</span>
+        </div>
+        <div class="flex items-center justify-between text-xs py-1.5 border-b border-carbon-100">
+          <span class="font-bold text-carbon-500">GUBI Balance</span>
+          <span class="font-extrabold text-carbon-950">${escapeHtml(Number(gubi).toFixed(2))}</span>
+        </div>
+        <div class="flex flex-col gap-1 pt-1">
+          <span class="text-[10px] font-extrabold uppercase tracking-[0.1em] text-carbon-400">Status Ketahanan</span>
+          <span class="inline-flex items-center justify-center rounded px-2.5 py-1.5 text-xs font-bold text-white shadow-soft" style="background-color: ${color}">
+            ${escapeHtml(category)}
+          </span>
+        </div>
+      </div>
     </div>
   `;
 }

@@ -9,7 +9,7 @@ export default function LayerPanel({ layers, layerState, overlay, onToggleLayer,
           Layer Control
         </div>
         <h2 className="mt-1 text-lg font-extrabold text-carbon-950">Data Spasial</h2>
-        <p className="mt-1 text-xs leading-5 text-carbon-600">Pilih satu raster utama, lalu atur opacity.</p>
+        <p className="mt-1 text-xs leading-5 text-carbon-600">Pilih indikator untuk membaca kondisi lingkungan dan tekanan wilayah.</p>
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto p-3">
@@ -26,9 +26,7 @@ export default function LayerPanel({ layers, layerState, overlay, onToggleLayer,
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.16em] text-carbon-500">{layer.group}</p>
                     <h3 className="mt-1 text-base font-extrabold text-carbon-950">{layer.name}</h3>
-                    {layer.rasterUrl ? (
-                      <p className="mt-1 text-xs font-semibold text-brand-700">Tile dari raster asli</p>
-                    ) : null}
+                    <p className="mt-1 text-xs leading-5 text-carbon-600">{layer.description}</p>
                   </div>
                   <button
                     type="button"
@@ -72,7 +70,6 @@ export default function LayerPanel({ layers, layerState, overlay, onToggleLayer,
             <div className="mt-3 flex items-center justify-between gap-3">
               <div>
                 <h3 className="text-base font-extrabold text-carbon-950">{overlay.name}</h3>
-                <p className="mt-1 text-xs font-semibold text-brand-700">Kecamatan.geojson</p>
               </div>
               <button
                 type="button"

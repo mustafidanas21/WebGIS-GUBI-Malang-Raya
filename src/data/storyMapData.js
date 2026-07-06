@@ -1,6 +1,6 @@
-import { analysisRegions, gubiGeoJson, malangCenter, parameterMeta } from './pollutionAnalysisData.js';
+import { malangCenter, parameterMeta } from './gubiAnalysisData.js';
 
-export { malangCenter, gubiGeoJson as pollutionGeoJson };
+export { malangCenter };
 
 const parameterById = Object.fromEntries(parameterMeta.map((parameter) => [parameter.id, parameter]));
 
@@ -12,8 +12,8 @@ export const storyChapters = [
     title: 'Mengenal Malang Raya',
     parameterId: 'gubi',
     summary:
-      'Malang Raya mencakup Kota Malang, Kabupaten Malang, dan Kota Batu. Setiap wilayah memiliki kombinasi ruang hijau, kawasan terbangun, dan suhu permukaan yang berbeda.',
-    fact: 'Tahukah kamu? Satu wilayah bisa terlihat sama-sama perkotaan, tetapi nilai keseimbangan hijaunya dapat berbeda.',
+      'Malang Raya mencakup Kota Malang, Kabupaten Malang, dan Kota Batu. Setiap wilayah memiliki kombinasi ruang hijau, kawasan terbangun, dan suhu permukaan yang memengaruhi ketahanan lingkungan.',
+    fact: 'Tahukah kamu? Wilayah yang sama-sama ramai bisa memiliki kemampuan berbeda dalam menghadapi panas, genangan, dan tekanan pembangunan.',
     visualLabel: 'Nilai GUBI',
     center: malangCenter,
     zoom: 11,
@@ -23,13 +23,13 @@ export const storyChapters = [
     id: 'keseimbangan-kota',
     number: '02',
     kicker: 'Ide Utama',
-    title: 'Mengapa Keseimbangan Kota Penting?',
+    title: 'Mengapa Ketahanan Kota Penting?',
     parameterId: 'gubi',
     summary:
-      'Kota berkelanjutan perlu menyeimbangkan kapasitas ekologis dan tekanan urbanisasi. GUBI membantu membaca apakah ruang hijau cukup kuat menghadapi tekanan pembangunan.',
-    fact: 'Tahukah kamu? Keseimbangan kota bukan berarti tidak boleh membangun, tetapi pembangunan perlu tetap memberi ruang bagi fungsi ekologis.',
-    visualLabel: 'Keseimbangan hijau-urban',
-    center: analysisRegions[0].center,
+      'Kota yang tangguh perlu menyeimbangkan kapasitas ekologis dan tekanan urbanisasi. GUBI membantu membaca apakah ruang hijau cukup kuat mendukung kenyamanan dan keselamatan warga.',
+    fact: 'Tahukah kamu? Ketahanan kota bukan berarti tidak boleh membangun, tetapi pembangunan perlu tetap memberi ruang bagi fungsi ekologis.',
+    visualLabel: 'Ketahanan hijau-urban',
+    center: [-7.9772, 112.6306],
     zoom: 12,
     focusRegionId: 'klojen',
   },
@@ -37,13 +37,13 @@ export const storyChapters = [
     id: 'ndvi-gci',
     number: '03',
     kicker: 'Kapasitas Ekologis',
-    title: 'Vegetasi dan Green Capacity (NDVI ke GCI)',
+    title: 'Vegetasi dan Ketahanan Ekosistem (NDVI ke GCI)',
     parameterId: 'gci',
     summary:
-      'NDVI membaca tingkat kehijauan vegetasi. Dalam pembelajaran ini, NDVI digunakan sebagai Green Capacity Index atau GCI dengan rentang 0 sampai 1.',
+      'NDVI membaca kehijauan vegetasi. Dalam GUBI, NDVI menjadi GCI untuk memperkirakan kekuatan ruang hijau dalam menjaga kualitas lingkungan.',
     fact: parameterById.ndvi.fact,
     visualLabel: 'GCI dari NDVI',
-    center: analysisRegions[4].center,
+    center: [-7.9396, 112.5919],
     zoom: 13,
     focusRegionId: 'rth-barat',
   },
@@ -51,13 +51,13 @@ export const storyChapters = [
     id: 'ndbi-lst-upi',
     number: '04',
     kicker: 'Tekanan Urban',
-    title: 'Urbanisasi dan Urban Pressure (NDBI + LST ke UPI)',
+    title: 'Tekanan Urban dan Paparan Panas (NDBI + LST ke UPI)',
     parameterId: 'upi',
     summary:
-      'NDBI menunjukkan kawasan terbangun, sedangkan LST menunjukkan suhu permukaan. Keduanya digabung untuk membentuk Urban Pressure Index atau UPI.',
+      'NDBI menunjukkan kawasan terbangun, sedangkan LST menunjukkan suhu permukaan. Keduanya membentuk UPI untuk membaca tekanan pembangunan dan risiko panas kota.',
     fact: parameterById.upi.fact,
     visualLabel: 'UPI dari NDBI dan LST',
-    center: analysisRegions[0].center,
+    center: [-7.9772, 112.6306],
     zoom: 13,
     focusRegionId: 'klojen',
   },
@@ -68,8 +68,8 @@ export const storyChapters = [
     title: 'Bagaimana GUBI Dihitung?',
     parameterId: 'gubi',
     summary:
-      'Rumus inti penelitian adalah GUBI = GCI - UPI. Jika GCI lebih besar, nilai GUBI positif. Jika UPI lebih besar, nilai GUBI negatif.',
-    fact: 'Tahukah kamu? GUBI berada pada rentang -1 sampai 1: negatif berarti tekanan urban dominan, nol berarti seimbang, positif berarti kapasitas ekologis dominan.',
+      'Rumus inti penelitian adalah GUBI = GCI - UPI. Jika GCI lebih besar, wilayah lebih kuat secara ekologis. Jika UPI lebih besar, tekanan urban perlu dikurangi.',
+    fact: 'Tahukah kamu? GUBI berada pada rentang -1 sampai 1: negatif berarti tekanan urban dominan, nol relatif seimbang, positif berarti kapasitas ekologis dominan.',
     visualLabel: 'GUBI = GCI - UPI',
     center: malangCenter,
     zoom: 12,
@@ -82,7 +82,7 @@ export const storyChapters = [
     title: 'Peta Green-Urban Balance Index',
     parameterId: 'gubi',
     summary:
-      'Peta GUBI membantu membandingkan wilayah. Warna hijau menunjukkan kapasitas ekologis lebih kuat, warna kuning relatif seimbang, dan warna oranye menunjukkan tekanan urban lebih dominan.',
+      'Peta GUBI membantu membandingkan wilayah untuk keputusan spasial. Warna hijau menunjukkan kapasitas ekologis lebih kuat, kuning relatif seimbang, dan oranye menunjukkan tekanan urban lebih dominan.',
     fact: parameterById.gubi.fact,
     visualLabel: 'Kategori GUBI',
     center: malangCenter,
@@ -92,14 +92,14 @@ export const storyChapters = [
   {
     id: 'meningkatkan-gubi',
     number: '07',
-    kicker: 'Aksi Berkelanjutan',
-    title: 'Bagaimana Meningkatkan Nilai GUBI?',
+    kicker: 'Aksi Ketahanan',
+    title: 'Bagaimana Meningkatkan Ketahanan GUBI?',
     parameterId: 'gubi',
     summary:
-      'Nilai GUBI dapat ditingkatkan dengan memperkuat vegetasi, menjaga ruang terbuka hijau, mengendalikan kawasan terbangun, dan menurunkan suhu permukaan.',
-    fact: 'Tahukah kamu? Strategi kota hijau bisa dimulai dari sekolah: menanam pohon, membuat taman kecil, dan mengurangi permukaan keras.',
-    visualLabel: 'Skenario peningkatan',
-    center: analysisRegions[4].center,
+      'Nilai GUBI dapat ditingkatkan dengan memperkuat vegetasi, menjaga ruang terbuka hijau, mengendalikan kawasan terbangun, dan mengurangi paparan panas.',
+    fact: 'Tahukah kamu? Aksi sederhana di pekarangan rumah atau lingkungan rukun warga (RW), seperti menanam pohon dan mengurangi permukaan beton keras, sangat berkontribusi pada resiliensi lingkungan perkotaan.',
+    visualLabel: 'Skenario mitigasi',
+    center: [-7.9396, 112.5919],
     zoom: 12,
     focusRegionId: 'rth-barat',
   },

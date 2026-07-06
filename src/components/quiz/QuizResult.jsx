@@ -52,7 +52,7 @@ export default function QuizResult({ questions, answers, onRestart }) {
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-700">Ringkasan belajar</p>
             <h1 className="mt-2 text-3xl font-extrabold leading-tight text-carbon-950 sm:text-4xl">
-              Kamu sudah menyelesaikan tantangan metodologi GUBI.
+              Kamu sudah menyelesaikan tantangan ketahanan hijau-urban.
             </h1>
             <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
               {stats.map((item) => (

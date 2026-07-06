@@ -1,10 +1,7 @@
 import {
-  calculateGubiValues,
   getGubiCategory,
-  gubiGeoJson,
   malangCenter,
-  parameterMeta,
-} from './pollutionAnalysisData.js';
+} from './gubiAnalysisData.js';
 import quizQuestionData from './quizQuestions.json';
 
 export const simulationCenter = malangCenter;
@@ -21,45 +18,46 @@ export const simulationFactors = [
   {
     id: 'vegetationGain',
     label: 'Tambah Vegetasi',
-    description: 'NDVI naik, GCI naik, lalu nilai GUBI ikut membaik.',
+    description: 'NDVI naik, GCI naik, dan ketahanan ekosistem wilayah ikut membaik.',
     color: '#21a98a',
   },
   {
     id: 'builtUpGain',
     label: 'Tambah Kawasan Terbangun',
-    description: 'NDBI naik, UPI naik, lalu nilai GUBI cenderung turun.',
+    description: 'NDBI naik, UPI naik, sehingga tekanan pemanfaatan lahan perlu dikendalikan.',
     color: '#8b5cf6',
   },
   {
     id: 'lstIncrease',
     label: 'Naikkan Suhu Permukaan',
-    description: 'LST naik, UPI naik, lalu tekanan urban menjadi lebih kuat.',
+    description: 'LST naik, UPI naik, dan paparan panas perlu dimitigasi dengan ruang hijau.',
     color: '#ef4444',
   },
 ];
 
 export const baseScenario = {
-  ndvi: 0.38,
-  ndbi: 0.48,
-  lst: 32.2,
+  ndvi: 0.5,
+  gci: 0.5,
+  upi: 0.35,
+  gubi: 0.15,
 };
 
-export const simulationZoneGeoJson = gubiGeoJson;
-
-export function calculateSimulation(values) {
-  // Model edukatif sederhana: slider mengubah NDVI, NDBI, dan LST,
-  // lalu GCI, UPI, dan GUBI dihitung ulang menggunakan rumus penelitian.
-  const adjustedInputs = {
-    ndvi: clamp(baseScenario.ndvi + values.vegetationGain * 0.003, 0, 1),
-    ndbi: clamp(baseScenario.ndbi + values.builtUpGain * 0.0025, 0, 1),
-    lst: clamp(baseScenario.lst + values.lstIncrease * 0.08 - values.vegetationGain * 0.025, 20, 45),
+export function calculateSimulation(values, baseValues = baseScenario) {
+  // Baseline berasal dari rata-rata atribut asli GCI, UPI, dan GUBI pada Kecamatan.geojson.
+  // Slider mengubah baseline tersebut sebagai skenario mitigasi sederhana.
+  const adjustedValues = {
+    ndvi: clamp((baseValues.ndvi ?? baseValues.gci) + values.vegetationGain * 0.003, 0, 1),
+    gci: clamp(baseValues.gci + values.vegetationGain * 0.003, 0, 1),
+    upi: clamp(baseValues.upi + values.builtUpGain * 0.0025 + values.lstIncrease * 0.002 - values.vegetationGain * 0.001, 0, 1),
   };
-  const baseValues = calculateGubiValues(baseScenario);
-  const adjustedValues = calculateGubiValues(adjustedInputs);
+  adjustedValues.gubi = Math.round((adjustedValues.gci - adjustedValues.upi) * 100) / 100;
   const change = Math.round((adjustedValues.gubi - baseValues.gubi) * 100) / 100;
 
   return {
-    baseValues,
+    baseValues: {
+      ...baseValues,
+      gubi: Math.round((baseValues.gubi ?? baseValues.gci - baseValues.upi) * 100) / 100,
+    },
     adjustedValues,
     gubi: adjustedValues.gubi,
     change,
@@ -69,13 +67,12 @@ export function calculateSimulation(values) {
       { name: 'UPI', value: adjustedValues.upi },
       { name: 'GUBI', value: adjustedValues.gubi },
     ],
-    impactData: parameterMeta.map((parameter) => ({
-      name: parameter.label,
-      value: parameter.id === 'lst'
-        ? Math.round(adjustedValues.lst)
-        : Math.round(adjustedValues[parameter.id] * 100),
-      color: parameter.color,
-    })),
+    impactData: [
+      { name: 'NDVI', value: Math.round(adjustedValues.ndvi * 100), color: '#21a98a' },
+      { name: 'GCI', value: Math.round(adjustedValues.gci * 100), color: '#16a34a' },
+      { name: 'UPI', value: Math.round(adjustedValues.upi * 100), color: '#f97316' },
+      { name: 'GUBI', value: Math.round((adjustedValues.gubi + 1) * 50), color: '#0f766e' },
+    ],
   };
 }
 

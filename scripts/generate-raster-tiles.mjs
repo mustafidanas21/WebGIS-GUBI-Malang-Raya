@@ -12,11 +12,10 @@ const tileMaskCache = new Map();
 
 const layers = [
   { id: 'gubi', file: 'GUBI.tif', color: colorGubi },
-  { id: 'gci', file: 'GCI.tif', color: (value) => colorRamp(value, 0, 1, ['#e8f7d5', '#63c96d', '#0f7a3f']) },
-  { id: 'upi', file: 'UPI.tif', color: (value) => colorRamp(value, 0, 1, ['#fff3c4', '#f59f2f', '#b83b18']) },
-  { id: 'ndvi', file: 'NDVI.tif', color: (value) => colorRamp(value, 0, 1, ['#f2f7c4', '#79c267', '#0a6b3f']) },
-  { id: 'ndbi', file: 'NDBI.tif', color: (value) => colorRamp(value, 0, 1, ['#e8ddff', '#a26ee6', '#5f2698']) },
-  { id: 'lst', file: 'LST.tif', color: (value) => colorRamp(value, 0.07, 0.3, ['#2f7fd0', '#f8ba52', '#c92828']) },
+  { id: 'upi', file: 'UPI.tif', color: colorUpi },
+  { id: 'ndvi', file: 'NDVI.tif', color: colorNdvi },
+  { id: 'ndbi', file: 'NDBI.tif', color: colorNdbi },
+  { id: 'lst', file: 'LST.tif', color: colorLst },
 ];
 
 const requestedLayers = process.argv.slice(2).map((layer) => layer.toLowerCase());
@@ -282,9 +281,47 @@ function tilePixelToLonLat(tileX, tileY, zoom, pixelX, pixelY) {
 
 function colorGubi(value) {
   if (!Number.isFinite(value)) return null;
-  if (value < -0.15) return '#e77f12';
-  if (value < 0.25) return '#f8ba52';
-  return '#21a98a';
+  if (value <= 0.098) return '#FF0000';
+  if (value <= 0.318) return '#FFA500';
+  if (value <= 0.475) return '#FFFF00';
+  if (value <= 0.602) return '#7CFC00';
+  return '#008000';
+}
+
+function colorUpi(value) {
+  if (!Number.isFinite(value)) return null;
+  if (value <= 0.249) return '#008000';
+  if (value <= 0.304) return '#7CFC00';
+  if (value <= 0.371) return '#FFFF00';
+  if (value <= 0.466) return '#FFA500';
+  return '#FF0000';
+}
+
+function colorNdvi(value) {
+  if (!Number.isFinite(value)) return null;
+  if (value <= 0.522) return '#FF0000';
+  if (value <= 0.667) return '#FFA500';
+  if (value <= 0.776) return '#FFFF00';
+  if (value <= 0.859) return '#7CFC00';
+  return '#008000';
+}
+
+function colorLst(value) {
+  if (!Number.isFinite(value)) return null;
+  if (value <= 0.137) return '#008000';
+  if (value <= 0.196) return '#7CFC00';
+  if (value <= 0.239) return '#FFFF00';
+  if (value <= 0.467) return '#FFA500';
+  return '#FF0000';
+}
+
+function colorNdbi(value) {
+  if (!Number.isFinite(value)) return null;
+  if (value <= 0.278) return '#008000';
+  if (value <= 0.345) return '#7CFC00';
+  if (value <= 0.427) return '#FFFF00';
+  if (value <= 0.549) return '#FFA500';
+  return '#FF0000';
 }
 
 function colorRamp(value, min, max, colors) {
